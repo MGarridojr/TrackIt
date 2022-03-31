@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export default function CredentialsInput(props){
     return(
-        <CredentialInput placeholder={props.text}></CredentialInput>
+        <CredentialInput placeholder={props.text} onChange={props.change}></CredentialInput>
     )
 }
 const CredentialInput = styled.input`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export default function CredentialsButton(props){
     return(
-        <CredentialButton>{props.text}</CredentialButton>
+        <CredentialButton type="submit">{props.text}</CredentialButton>
     )
 }
 const CredentialButton = styled.button`
