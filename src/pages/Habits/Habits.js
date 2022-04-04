@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import styled from "styled-components";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TitlePage from "../../components/TitlePage";
-import Context from "../../context/Context";
 import RenderHabits from "./RenderHabits";
 export default function Habits(){
     return(

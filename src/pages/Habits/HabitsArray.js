@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Context from "../../context/Context";
 import trash from "./../../assets/trash.svg"
 export default function HabitsArray({ id, nome, dias }) {
-    const { token, CatchHistory } = useContext(Context);
+    const { token, CatchHistory, CatchTodayHabit, CatchDaylyHabit } = useContext(Context);
 
     function DeleteHabit() {
         const config = {
@@ -16,6 +16,8 @@ export default function HabitsArray({ id, nome, dias }) {
         const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config)
         .then((response) => {
             CatchHistory();
+            CatchDaylyHabit();
+            CatchTodayHabit();
         })
         .catch((err) => {
             const { response } = err;

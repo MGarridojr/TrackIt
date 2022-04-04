@@ -8,7 +8,7 @@ import Context from "../../context/Context";
 import HabitsArray from "./HabitsArray";
 import WeekArray from "./WeekArray";
 export default function RenderHabits() {
-    const { habitsArray, setHabitsArray, token, addHabit, setAddHabit, CatchHistory } = useContext(Context)
+    const { habitsArray, setHabitsArray, token, addHabit, setAddHabit, CatchHistory, CatchTodayHabit, CatchDaylyHabit } = useContext(Context)
     const [newHabit, setNewHabit] = useState({ name: "", days: [] })
     const [loadingNewHabit, setLoadingNewHabit] = useState(false);
     const arraySemana = ["D", "S", "T", "Q", "Q", "S", "S"];    
@@ -35,6 +35,8 @@ export default function RenderHabits() {
                 setNewHabit({ name: "", days: [] });
                 setAddHabit(false);
                 CatchHistory();
+                CatchDaylyHabit();
+                CatchTodayHabit();
                 setLoadingNewHabit(false);
             })
             .catch(()=>{
