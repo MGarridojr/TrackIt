@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "@fontsource/lexend-deca"
 export default function CredentialsText(props){
     return(
         <Text>{props.text}</Text>

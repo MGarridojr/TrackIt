@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import "@fontsource/lexend-deca"
 export default function CredentialsInput(props){
     return(
-        <CredentialInput placeholder={props.text} onChange={props.change}></CredentialInput>
+        <CredentialInput placeholder={props.text} type={props.type} onChange={props.change}></CredentialInput>
     )
 }
 const CredentialInput = styled.input`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "@fontsource/lexend-deca"
 export default function CredentialsButton(props){
     return(
         <CredentialButton type="submit">{props.text}</CredentialButton>
