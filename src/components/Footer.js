@@ -3,30 +3,42 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css'
 import "@fontsource/lexend-deca"
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import Context from "../context/Context";
 export default function Footer() {
-    const value= 60
-    return(
+    const { percentage, CatchTodayHabit } = useContext(Context)
+    useEffect(() => {
+        CatchTodayHabit()
+    }, []
+    )
+    return (
         <Div>
-            <Link to="/habitos" style={{textDecoration: 'none'}}>
-                <FooterText>Hábitos</FooterText>
-            </Link>
-            <Link to="/hoje" style={{textDecoration: 'none'}}>
-                <Today>
-                <CircularProgressbar
-                    value={value}
-                    text="hoje"
-                    background
-                    backgroundPadding={6}
-                    styles={buildStyles({
-                        backgroundColor: "#52B6FF",
-                        textColor: "#fff",
-                        pathColor: "#fff",
-                        trailColor: "transparent",
-                    })}
-                />
-                </Today>
-            </Link>
-            <FooterText>Histórico</FooterText>
+            {percentage ?
+                <>
+                    <Link to="/habitos" style={{ textDecoration: 'none' }}>
+                        <FooterText>Hábitos</FooterText>
+                    </Link>
+                    <Link to="/hoje" style={{ textDecoration: 'none' }}>
+                        <Today>
+                            <CircularProgressbar
+                                value={percentage.base}
+                                maxValue={percentage.total}
+                                text="hoje"
+                                background
+                                backgroundPadding={6}
+                                styles={buildStyles({
+                                    backgroundColor: "#52B6FF",
+                                    textColor: "#fff",
+                                    pathColor: `rgba(255, 255, 255, ${percentage.base / percentage.total * 100})`,
+                                    trailColor: "transparent",
+                                })}
+                            />
+                        </Today>
+                    </Link>
+                    <FooterText>Histórico</FooterText>
+                </>
+                : <></>
+            }
 
         </Div>
     )

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import check from "../../assets/check.svg"

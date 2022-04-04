@@ -11,7 +11,7 @@ export default function RenderHabits() {
     const { habitsArray, setHabitsArray, token, addHabit, setAddHabit, CatchHistory, CatchTodayHabit, CatchDaylyHabit } = useContext(Context)
     const [newHabit, setNewHabit] = useState({ name: "", days: [] })
     const [loadingNewHabit, setLoadingNewHabit] = useState(false);
-    const arraySemana = ["D", "S", "T", "Q", "Q", "S", "S"];    
+    const arraySemana = ["D", "S", "T", "Q", "Q", "S", "S"];
     CatchHistory();
 
     function tirarElemento(array, item) {
@@ -39,16 +39,16 @@ export default function RenderHabits() {
                 CatchTodayHabit();
                 setLoadingNewHabit(false);
             })
-            .catch(()=>{
+            .catch(() => {
                 console.log("erro")
                 setLoadingNewHabit(false)
             });
-            
+
     }
     function RenderWeekArray() {
         return arraySemana.map((dia, index) => {
             return (
-                <WeekArray 
+                <WeekArray
                     key={index}
                     index={index}
                     dia={dia}
@@ -138,7 +138,7 @@ export default function RenderHabits() {
                                 <RenderWeekArray />
                             </menu>
                             <div>
-                            <SendButton type="submit" onClick={() => setNewHabit({ ...newHabit, days: newHabit.days.sort() })}>Salvar</SendButton>
+                                <SendButton type="submit" onClick={() => setNewHabit({ ...newHabit, days: newHabit.days.sort() })}>Salvar</SendButton>
                                 <CancelButton onClick={() => setAddHabit(false)}>Cancelar</CancelButton>
                             </div>
                         </AddHabitSection>

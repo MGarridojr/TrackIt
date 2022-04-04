@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "@fontsource/lexend-deca"
 import dayjs from "dayjs";
 import Context from "../../context/Context";
 import TodayArray from "./TodayArray";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-export default function Today(){
+export default function Today() {
     const { todayHabitArray, percentage, CatchTodayHabit } = useContext(Context);
 
     require("dayjs/locale/pt-br")
@@ -16,6 +16,9 @@ export default function Today(){
     let stringSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
 
     function RenderTodayHabit() {
+        useEffect(() => {
+            CatchTodayHabit()
+        }, [])
         if (todayHabitArray.length > 0) {
             return todayHabitArray.map(habito => {
                 const { id, name, done, currentSequence, highestSequence } = habito;
@@ -30,22 +33,26 @@ export default function Today(){
                     />
                 )
             })
+        } else {
+            return (
+                <>Carregando...</>
+            )
         }
     }
 
     return (
         <>
-        <Header />
-        <HojeExibido>
-            <h1>{stringSemana}, {diaMes}</h1>
-            {percentage.base === 0 ? <TextoCinza>Nenhum hábito concluído ainda</TextoCinza> : <TextoVerde>{((percentage.base/percentage.total) * 100).toFixed()}% dos hábitos concluídos</TextoVerde>}
-            <RenderTodayHabit />
-        </HojeExibido>
-        <Footer />
+            <Header />
+            <RenderTodayPage>
+                <h1>{stringSemana}, {diaMes}</h1>
+                {percentage.base === 0 ? <TextoCinza>Nenhum hábito concluído ainda</TextoCinza> : <TextoVerde>{((percentage.base / percentage.total) * 100).toFixed()}% dos hábitos concluídos</TextoVerde>}
+                <RenderTodayHabit />
+            </RenderTodayPage>
+            <Footer />
         </>
     )
 }
-const HojeExibido = styled.main`
+const RenderTodayPage = styled.main`
 margin: 98px 15px 129px 15px;
 h1 {
     margin-bottom: 3px;

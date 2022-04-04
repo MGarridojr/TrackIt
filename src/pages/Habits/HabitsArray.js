@@ -14,17 +14,17 @@ export default function HabitsArray({ id, nome, dias }) {
             }
         };
         const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config)
-        .then((response) => {
-            CatchHistory();
-            CatchDaylyHabit();
-            CatchTodayHabit();
-        })
-        .catch((err) => {
-            const { response } = err;
-            const { data } = response;
-            const { message } = data;
-            alert(message);
-        })
+            .then((response) => {
+                CatchHistory();
+                CatchDaylyHabit();
+                CatchTodayHabit();
+            })
+            .catch((err) => {
+                const { response } = err;
+                const { data } = response;
+                const { message } = data;
+                alert(message);
+            })
     }
 
     return (

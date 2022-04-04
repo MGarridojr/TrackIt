@@ -2,15 +2,15 @@ import styled from "styled-components";
 import "@fontsource/playball"
 import { useContext } from "react";
 import Context from "../context/Context";
-export default function Header(){
-    const {UserImage} = useContext(Context)
-    return(
+export default function Header() {
+    const { UserImage } = useContext(Context)
+    return (
         <Div>
-        <LogoStyle>TrackIt</LogoStyle>
-        <Image src={UserImage} alt="userImage" />
-        </Div>        
-        )
-        
+            <LogoStyle>TrackIt</LogoStyle>
+            <Image src={UserImage} alt="userImage" />
+        </Div>
+    )
+
 
 }
 

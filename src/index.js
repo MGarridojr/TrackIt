@@ -24,17 +24,17 @@ function App() {
         };
         axios.get(
             "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-             config)
-        .then((response) => {
-            const { data } = response;
-            setHabitsArray(data);
-        })
-        .catch((err) => {
-            const { response } = err;
-            const { data } = response;
-            const { message } = data;
-            alert(message);
-        })
+            config)
+            .then((response) => {
+                const { data } = response;
+                setHabitsArray(data);
+            })
+            .catch((err) => {
+                const { response } = err;
+                const { data } = response;
+                const { message } = data;
+                alert(message);
+            })
     }
     function CatchTodayHabit() {
         const config = {
@@ -44,26 +44,26 @@ function App() {
         };
         axios.get(
             "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today",
-             config)
-        .then((response) => {
-            const { data } = response;
-            const executed = data.filter(practice => {
-                if (practice.done === true) {
-                    return practice;
-                }
+            config)
+            .then((response) => {
+                const { data } = response;
+                const executed = data.filter(practice => {
+                    if (practice.done === true) {
+                        return practice;
+                    }
+                })
+                setPercentage({
+                    base: executed.length,
+                    total: data.length
+                });
+                setTodayHabitArray(data);
             })
-            setPercentage({
-                base: executed.length,
-                total: data.length
-            });
-            setTodayHabitArray(data);
-        })
-        .catch((err) => {
-            const { response } = err;
-            const { data } = response;
-            const { message } = data;
-            alert(message);
-        })
+            .catch((err) => {
+                const { response } = err;
+                const { data } = response;
+                const { message } = data;
+                alert(message);
+            })
     }
 
     function CatchDaylyHabit() {
@@ -75,29 +75,29 @@ function App() {
         axios.get(
             "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/history/daily",
             config)
-        .then((response) => {
-            const { data } = response;
-            setDaylyHabit(data);
-        })
-        .catch((err) => {
-            const { response } = err;
-            const { data } = response;
-            const { message } = data;
-            alert(message);
-        })
+            .then((response) => {
+                const { data } = response;
+                setDaylyHabit(data);
+            })
+            .catch((err) => {
+                const { response } = err;
+                const { data } = response;
+                const { message } = data;
+                alert(message);
+            })
     }
 
     return (
         <>
-            <Context.Provider value={{ 
-                token, 
-                setToken, 
-                userImage, 
-                setUserImage, 
-                habitsArray, 
-                setHabitsArray, 
-                addHabit, 
-                setAddHabit, 
+            <Context.Provider value={{
+                token,
+                setToken,
+                userImage,
+                setUserImage,
+                habitsArray,
+                setHabitsArray,
+                addHabit,
+                setAddHabit,
                 CatchHistory,
                 CatchTodayHabit,
                 CatchDaylyHabit,
